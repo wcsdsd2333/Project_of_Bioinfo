@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OligoFormer</title>
+    <link rel="stylesheet" href="contact.css">
+    <!-- 地图 API -->
+    <script src="https://webapi.amap.com/maps?v=1.4.15&key=dd1acc60b8db5a1132b0e8956ed4bd30&callback=init"></script>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <ul>
+            <li><a href="#" id="homeLink">Home</a></li>
+            <li><a href="#" id="helpLink">Help</a></li>
+            <li><a href="#" id="aboutLink">About</a></li>
+            <li><a href="#" id="contactLink">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- 主内容区域 -->
+    <main>
+        <!-- 联系信息页面 -->
+        <div id="contactPage" style="display: none;">
+            <div class="header">
+                <div class="inner-header flex-header">
+                    <div class="container h-100">
+                        <div class="row h-100 align-items-center">
+                            <div class="col-lg-12 text-center">
+                                <h1 class="headertitle display-4 text-white mt-5 mb-2">
+                                    Contact
+                                </h1>
+                                <p class="headerlead lead mx-auto mt-5 mb-5 text-white-50 w-80">
+                                    Welcome collaboration with Lu lab
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="w-80 mx-auto pt-4 pb-4 text-center"> </p>
+            <div class="row mt-3 mp-content">
+                <div class="col-lg-6">
+                    <!-- Lab homepage Cards -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary text-capitalize">Lab homepage</h6>
+                        </div>
+                        <div class="card-body text-justify">
+                            <p>MOE Key Lab of Bioinformatics <br />School of Life Sciences, Tsinghua University</p>
+                            <a target="_blank" href="http://lulab.life.tsinghua.edu.cn/"
+                                class="btn btn-primary btn-icon-split">
+                                <span class="text text-capitalize">View homepage</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Address Cards -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary text-capitalize">Addresss</h6>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                Biotechnology Building, School of Life Sciences,<br />
+                                Tsinghua University, Beijing 100084, P.R.China
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information Cards -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary text-capitalize">Contact information</h6>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-muted">
+                                Tel: <a href="tel:+86-10-62789217">+86-10-62789217</a><br />
+                                Fax: <a href="fax:+86-10-62789217">+86-10-62789217</a><br />
+                                Email: <a href="mailto:lulab1@tsinghua.edu.cn">lulab1@tsinghua.edu.cn</a><br />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card shadow mb-3">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Map</h6>
+                        </div>
+                        <div class="card-body">
+                            <div style="width: 100%; height: 506px" id="mapContainer" tabindex="0"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="w-80 mx-auto pt-4 pb-4 text-center"> </p>
+
+            <script type="text/javascript">
+                var infoWindow;
+                var map = new AMap.Map('mapContainer', {
+                    resizeEnable: true,
+                    center: [116.315901, 40.00484],
+                    zoom: 17,
+                });
+
+                function openInfo() {
+                    var info = [];
+                    info.push("<div class='input-card content-window-card mp-content'><div></div> ");
+                    info.push('<div style="padding:0px 0px 0px 0px;"><h6 class="lulab_head">Lu Lab @ Tsinghua University</h6>');
+                    info.push("<p class='input-item lulab_txt'>Addr.: Biotech. Building, School of Life Sciences <br>Room: 2-108, 2-110, 2-111, 3-106, 3-109.<br>Tel.: 010-62789217</p></div></div>");
+                    info.push('</div></div>');
+
+                    infoWindow = new AMap.InfoWindow({
+                        content: info.join(''),
+                    });
+
+                    infoWindow.open(map, map.getCenter());
+                }
+                openInfo();
+            </script>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('contactLink').addEventListener('click', function (e) {
+            e.preventDefault();
+            document.getElementById('contactPage').style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>
